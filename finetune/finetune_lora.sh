@@ -1,7 +1,7 @@
 #!/bin/bash
-export CUDA_VISIBLE_DEVICES=0,1
-export HF_HOME=huggingface
-export HF_ENDPOINT="https://hf-mirror.com"
+export CUDA_VISIBLE_DEVICES=0,1              # 根据需要设置可见的gpu
+export HF_HOME=huggingface                   # 根据需要设置huggingface的下载路径
+export HF_ENDPOINT="https://hf-mirror.com"   # 根据需要设置huggingface的下载源
 GPUS_PER_NODE=2
 NNODES=1
 NODE_RANK=0
