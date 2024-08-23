@@ -1,0 +1,17 @@
+*.bk
+__pycache__
+.DS_Store
+result
+rearrange.py
+web_demo_streamlit.py
+README_en.md
+README_zh.md
+README.md
+finetune/huggingface
+finetune/data
+finetune/output
+.vscode
+.github/ISSUE_TEMPLATE/
+assets
+docs
+eval_mm
