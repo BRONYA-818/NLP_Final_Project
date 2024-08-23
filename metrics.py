@@ -1,12 +1,12 @@
 import json
 import torch
-import clip
+# import clip
 from PIL import Image
-from bert_score import score as bert_score
+# from bert_score import score as bert_score
 from pycocoevalcap.bleu.bleu import Bleu
 from pycocoevalcap.cider.cider import Cider
-from pycocoevalcap.rouge.rouge import Rouge
-from pycocoevalcap.spice.spice import Spice
+# from pycocoevalcap.rouge.rouge import Rouge
+# from pycocoevalcap.spice.spice import Spice
 
 # 读取 JSON 文件
 def load_json(file_path):
@@ -63,31 +63,31 @@ def calculate_metrics(references, hypotheses, image_paths):
     cider_scorer = Cider()
     cider_score, _ = cider_scorer.compute_score(ref_dict, hyp_dict)
 
-    # ROUGE
-    rouge_scorer = Rouge()
-    rouge_score, _ = rouge_scorer.compute_score(ref_dict, hyp_dict)
+    # # ROUGE
+    # rouge_scorer = Rouge()
+    # rouge_score, _ = rouge_scorer.compute_score(ref_dict, hyp_dict)
 
     # # SPICE
     # spice_scorer = Spice()
     # spice_score, _ = spice_scorer.compute_score(ref_dict, hyp_dict)
 
-    # CLIP Score
-    clip_score = calculate_clip_score(image_paths, hypotheses)
+    # # CLIP Score
+    # clip_score = calculate_clip_score(image_paths, hypotheses)
 
-    # BERT Score
-    P, R, F1 = bert_score([v[0] for v in hyp_dict.values()], [v[0] for v in ref_dict.values()], lang='zh')
+    # # BERT Score
+    # P, R, F1 = bert_score([v[0] for v in hyp_dict.values()], [v[0] for v in ref_dict.values()], lang='zh')
 
     return {
         'BLEU': bleu_score,
-        'CIDEr': cider_score,
-        'ROUGE': rouge_score,
+        'CIDEr': cider_score
+        # 'ROUGE': rouge_score,
         # 'SPICE': spice_score,
-        'CLIP Score': clip_score,
-        'BERT Score': {
-            'Precision': P.mean().item(),
-            'Recall': R.mean().item(),
-            'F1': F1.mean().item()
-        }
+        # 'CLIP Score': clip_score,
+        # 'BERT Score': {
+        #     'Precision': P.mean().item(),
+        #     'Recall': R.mean().item(),
+        #     'F1': F1.mean().item()
+        # }
     }
 
 # 主函数

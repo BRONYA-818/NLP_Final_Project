@@ -1,7 +1,6 @@
 *.bk
 __pycache__
 .DS_Store
-result
 rearrange.py
 web_demo_streamlit.py
 README_en.md
