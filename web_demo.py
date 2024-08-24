@@ -36,27 +36,32 @@ else:
     dtype = torch.float16
 
 # Load model
-# 如果要使用没有微调的模型
-model_path = 'openbmb/MiniCPM-V-2'
-model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model = model.to(device=device, dtype=dtype)
-model.eval()
-
-# 如果要使用LoRA微调的模型
-# model_type=  "openbmb/MiniCPM-V-2" 
-# path_to_adapter="finetune/output/output_lora/checkpoint-5000"
-# model =  AutoModel.from_pretrained(
-#         model_type,
-#         trust_remote_code=True
-#         )
-# tokenizer = AutoTokenizer.from_pretrained(path_to_adapter, trust_remote_code=True)
-# lora_model = PeftModel.from_pretrained(
-#     model,
-#     path_to_adapter,
-#     device_map="auto",
-#     trust_remote_code=True
-# ).eval().cuda()
+type="pretrained"  #在这里进行修改，以决定使用的模型类型
+assert type in ["pretrained", "ds", "lora"]
+model_path = 'openbmb/MiniCPM-V-2'#预训练模型路径
+# model_path = 'finetune/output/xxx.pt'#全量微调或LoRA微调模型路径
+# Load model
+if type=="pretrained" or type=="ds":
+    # 如果要使用预训练模型或全量微调模型（注意模型路径）
+    model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
+    tokenizer = AutoTokenizefrom_pretrained(model_path, trust_remote_code=True)
+    model = model.to(device=device, dtype=dtype)
+    model.eval()
+else:
+    #如果要使用LoRA微调的模型
+    model_type=  "openbmb/MiniCPM-V-2" 
+    path_to_adapter="finetune/output/output_lora/checkpoint-5000"
+    model =  AutoModel.from_pretrained(
+            model_type,
+            trust_remote_code=True
+            )
+    tokenizer = AutoTokenizer.from_pretrained(path_to_adapter, trust_remote_code=True)
+    lora_model = PeftModel.from_pretrained(
+        model,
+        path_to_adapter,
+        device_map="auto",
+        trust_remote_code=True
+    ).eval().cuda()
 
 
 ERROR_MSG = "Error, please retry"

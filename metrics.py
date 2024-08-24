@@ -81,6 +81,8 @@ def calculate_metrics(references, hypotheses, image_paths):
     # BERT Score
     P, R, F1 = bert_score([v[0] for v in hyp_dict.values()], [v[0] for v in ref_dict.values()], lang='zh')
 
+    # 没有使用CLIP Score的原因是，CLIP中的文本编码器最多只能处理长度为77的文本，而我们的回答文本可能会超过这个长度
+    # 没有使用METEOR的原因是，这个依赖java，其中出现了一些报错，暂时没有解决
     return {
         'BLEU': bleu_score,
         'CIDEr': cider_score,
@@ -97,7 +99,7 @@ def calculate_metrics(references, hypotheses, image_paths):
 # 主函数
 def main():
     # 加载数据
-    output_data = load_json('result/output.json')
+    output_data = load_json('result/pretrained/output.json')
     ground_truth_data = load_json('finetune/data/eval.json')
 
     # 提取回答和图像路径
@@ -113,7 +115,7 @@ def main():
     metrics = calculate_metrics(references, hypotheses, image_paths)
 
     # 将结果写入 JSON 文件
-    with open('result/metrics.json', 'w', encoding='utf-8') as f:
+    with open('result/pretrained/metrics.json', 'w', encoding='utf-8') as f:
         json.dump(metrics, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
