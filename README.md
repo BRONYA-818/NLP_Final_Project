@@ -47,7 +47,7 @@ os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 
 ## 数据与模型权重准备
-请将数据集(包括图片文件夹和json标注文件）放置在：
+请将数据集（包括图片文件夹和json标注文件）放置在：
 ```
 finetune/data
 ```
@@ -64,6 +64,25 @@ finetune/
     │   └── ...
     ├── train.json
     └── eval.json
+```
+json文件的格式应当为：
+```
+[
+    {
+        "id": "0000",
+        "image": "data/Train/0000.jpg",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n 请告诉我这张照片记录了一个什么场景，尽可能包含图像中出现的所有物体。"
+            },
+            {
+                "role": "assistant",
+                "content": "这是一张从车内后视镜拍摄的照片，捕捉到了一个美丽的日落景色和道路上的车辆行驶画面。  在图片左侧可以看到一辆汽车的一部分车身以及车窗反射出的道路景象；右侧则是一个圆形的反光镜（可能是另一辆车或路边设施上的），它反映出道路、天空中的太阳和其他一些细节。 中间部分是开阔的道路，上面有白色的车道线标记，并且可以看见前方有一辆小轿车正在路上行驶。夕阳将整个场景染成了一片金黄色调，营造出了宁静而美好的氛围。"
+            }
+        ]
+    }
+]
 ```
 模型权重请在[百度网盘链接（提取码：jg59 ）](https://pan.baidu.com/s/1_cCNee6uniTtP3c3ZUcgJA?pwd=jg59 )下载，位于NLP Final Project/MiniCPM-V/LoRA权重/output,请将output文件夹置于finetune目录下。因文件较大，可以只下载
 ```
@@ -129,6 +148,21 @@ python web_demo.py
 指标计算请运行
 ```bash
 python metrics.py
+```
+我们所有的推理结果位于：
+```
+finetune/
+└── output/
+    ├── ds/
+    │   ├── output.json
+    │   └── metrics.json
+    ├── lora/
+    │   ├── output.json
+    │   └── metrics.json
+    └── pretrained/
+        ├── output.json
+        └── metrics.json
+
 ```
 运行推理和webUI demo时请注意选择模型类型和模型路径，所有代码运行时也需要注意根据自己的路径进行修改
 ```python
