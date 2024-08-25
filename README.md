@@ -137,7 +137,7 @@ assert type in ["pretrained", "ds", "lora"]
 model_path = 'openbmb/MiniCPM-V-2'#预训练模型路径
 # model_path = 'finetune/output/xxx.pt'#全量微调或LoRA微调模型路径
 ```
-如果受限于硬件条件无法运行webUI demo，可以联系QQ：879059433，我将在本地服务器上运行并开放链接供测试使用。如果有其他任何问题也可以提issue或者直接QQ联系。
+如果受限于硬件条件（推理预计需要8GB显存）无法运行webUI demo，可以联系QQ：879059433，我将在本地服务器上运行并开放链接供测试使用。如果有其他任何问题也可以提issue或者直接QQ联系。
 以下是webUI demo的演示图片：
 <img alt="webUI" src="figure/webUI demo.jpeg" width=400>
 
