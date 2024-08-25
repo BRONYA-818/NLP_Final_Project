@@ -3,9 +3,6 @@ __pycache__
 .DS_Store
 rearrange.py
 web_demo_streamlit.py
-README_en.md
-README_zh.md
-README.md
 finetune/huggingface
 finetune/data/Train
 finetune/data/Val
@@ -15,3 +12,4 @@ finetune/output
 assets
 docs
 eval_mm
+official
