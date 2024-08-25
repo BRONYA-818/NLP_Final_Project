@@ -139,7 +139,7 @@ model_path = 'openbmb/MiniCPM-V-2'#预训练模型路径
 ```
 如果受限于硬件条件无法运行webUI demo，可以联系QQ：879059433，我将在本地服务器上运行并开放链接供测试使用。如果有其他任何问题也可以提issue或者直接QQ联系。
 以下是webUI demo的演示图片：
-<img alt="webUI" src="/data/MiniCPM-V/figure/webUI demo.jpeg" width=400>
+<img alt="webUI" src="figure/webUI demo.jpeg" width=400>
 
 
 
@@ -173,7 +173,7 @@ git push origin feature-branch
  
 
 ## 特别感谢
-<img alt="洛天依" src="/data/MiniCPM-V/figure/lty.png" width=200>\
+<img alt="洛天依" src="figure/lty.png" width=200>\
 感谢阿八的歌声陪伴我每一个星夜\
 [洛天依B站官号](https://space.bilibili.com/36081646?spm_id_from=333.337.0.0)\
 关注洛天依喵谢谢喵\
