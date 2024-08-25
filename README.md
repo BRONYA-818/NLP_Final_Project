@@ -18,7 +18,7 @@
 首先，克隆本仓库到你的本地机器：
 ```bash
 git clone https://github.com/BRONYA-818/NLP_Final_Project.git
-cd your-repo
+cd NLP_Final_Project
 ```
 ### 使用 `conda`
 ```bash
